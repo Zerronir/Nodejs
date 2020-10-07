@@ -1,5 +1,6 @@
 const { series } = require('gulp');
-const clean = require('gulp-clean-css');
+const sourcemap = require('gulp-sourcemaps');
+const cleanCSS = require('gulp-clean-css');
 
 // The `clean` function is not exported so it can be considered a private task.
 // It can still be used within the `series()` composition.
@@ -15,9 +16,13 @@ function build(cb) {
     cb();
 }
 
-function clearCSS(cb) {
-    cb();
+function minifyCSS(){
+    // Devolvemos un return con todos los archivos
+    return src('src/css/*.css', {sourcemap: true})
+        .pipe(cleanCSS())
+        .pipe(dest('dist/'));
 }
 
 exports.build = build;
 exports.default = series(clean, build);
+exports.minCSS = minifyCSS;
