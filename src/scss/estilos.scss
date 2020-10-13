@@ -1,5 +1,6 @@
+$fontcolor: red;
 h1 {
-  color: red;
+  color: $fontcolor;
   padding: 1px;
   background-color: yellow;
 }

@@ -18,3 +18,7 @@ La tarea para el próximo dia es hacer lo mismo para javascript.
 También hemos usado la librería de uglify para minimizar javascript instalando el plugin
 con el comando "npm install --save-dev gulp-uglify" y creado las funciones para 
 minimzar css y javascript.
+
+# 13/10/2020
+Hemos instalado gulp-scss para poder compilar sass, la hemos guardado de forma 
+local en modo -dev para que no se suba al servidor

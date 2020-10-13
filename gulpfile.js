@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const { series, src, dest } = require('gulp');
+const { series, src, dest, watch } = require('gulp');
 const sourcemap = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const cleanJS = require('gulp-uglify');
@@ -28,6 +28,7 @@ function minifyCSS(cb){
 }
 
 /*
+*
 * Cream una funció per a minimitzar JavaScript
 *
 * */
@@ -43,9 +44,18 @@ function compilaSass(){
             .pipe(dest('lib/scss/'));
 }
 
+function compila(){
 
+}
+
+function watchSCSS(){
+    watch('src/scss/*.scss', compilaSass);
+}
+
+// Exportamos las tareas
 exports.build = build;
 exports.default = series(clean, build);
 exports.minCSS = minifyCSS;
 exports.minJS = minifyJS;
 exports.minSCSS = compilaSass;
+exports.watcher = watchSCSS;
