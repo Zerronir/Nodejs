@@ -4,6 +4,7 @@ const sourcemap = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const cleanJS = require('gulp-uglify');
 const pipeline = require('readable-stream').pipeline;
+const sass = require('gulp-sass');
 
 // The `clean` function is not exported so it can be considered a private task.
 // It can still be used within the `series()` composition.
@@ -36,9 +37,15 @@ function minifyJS(cb){
        .pipe(dest('lib/js/'));
 }
 
+function compilaSass(){
+    return src("src/scss/*.scss")
+            .pipe(sass())
+            .pipe(dest('lib/scss/'));
+}
 
 
 exports.build = build;
 exports.default = series(clean, build);
 exports.minCSS = minifyCSS;
 exports.minJS = minifyJS;
+exports.minSCSS = compilaSass;
